@@ -1,0 +1,232 @@
+@CHARSET "ISO-8859-1";
+
+
+/*.................. LOGO ..........................*/
+
+	.border
+		{
+		background-color: cadetblue;
+		padding:7px;
+		border-style: solid;
+		border-width: 5px;
+		border-color: darkslategrey;
+		margin-top: 7px;
+		margin-left: 21px;
+		margin-right: 21px;
+		margin-bottom: 2px;
+		background-repeat: no-repeat;
+		display: inline-block;
+		height: 185px;
+		width: 1261px;
+		text-align: right;
+		}
+	h1
+	{
+			color: darkslategray;
+			text-align: center;
+			text-transform: capitalize;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 2.7em;
+	}
+	h3
+	{
+			color: darkslategray;
+			text-align: center;
+			text-transform: capitalize;
+	}
+/*..................End of LOGO ..........................*/	
+	body 
+	{
+	background:dimgrey;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	}
+	
+	/*........................CONTANT....................*/
+	
+	/*............................For the table .......................................*/
+	table, th, td 
+	{
+		border: 2px solid black;
+		border-collapse: collapse;
+	}
+	table
+	{
+		width: 100%;
+	}
+	td 
+	{
+		padding: 5px;
+	}
+	
+	.designation
+	{
+		float:right;
+	}
+	
+	.place
+	{
+		float:left;
+	}
+	.gap
+	{
+		margin-top: 9px;
+	}
+	
+	p
+	{
+		font-family: monospace;
+		font-size: 17px;
+	}
+	/*...............................end of table ......................................*/
+	
+	
+	.contant
+	 {
+
+		width: 1115px;
+		display: inline-block;
+		
+		padding-left: 80px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		padding-right: 80px;
+		
+		background-color: silver;
+		
+		
+		border-style: solid;
+		border-width: 5px;
+		border-color: darkslategray;
+		margin-top: 7px;
+		margin-left: 21px;
+		margin-right: 21px;
+		margin-bottom: 2px;
+	 }
+	 
+	 
+	 .form
+	 {
+		text-align: center;
+		text-transform: capitalize;
+		padding: 15px;
+	 }
+	 
+	 .center
+	 {
+		margin: 20px
+	 }
+	
+	/*....................End of CONTANT..................*/
+	
+	/* ................ FOOTER...........................*/
+	.footer 
+	{
+	  margin:10px auto;
+	  width: 300px;
+	  text-align: center;
+	  color:black;
+	  font-size: 12px;
+	}
+	.footer a 
+	{
+	  padding: 1px 3px;
+	  margin: 0 -1px;
+	  color: #fff;
+	  text-decoration: none;
+	  text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+	  border-radius: 2px;
+	}
+	.footer a:hover 
+	{
+	  color:#2F0916;
+	  text-shadow: none;
+	  background: #E83671;
+	}
+	/*........... End of FOOTER ..........................*/
+
+	
+	/*........... Submit ................................*/
+	
+	 .button
+	{
+	
+	display: block;
+	margin-left: 524px;
+	padding: 10px;
+	text-decoration: none;
+	
+	background: none;
+	border: none;
+	cursor: pointer;
+	
+	font-family: 'Bree Serif', serif;
+	font-weight: 300;
+	font-size: 21px;
+	color: #414848;
+	text-shadow: 0px 1px 0 rgba(256,256,256,0.5);
+	}
+
+	.button:hover 
+	{
+		color: #3f9db8;
+	}
+
+	.button:focus 
+	{
+		position: relative;
+		bottom: -1px;
+	}
+	
+	/*........... End of Submit ................................*/
+	
+	
+	/*......................... Text Field .....................  */
+	
+	 .reg_section 
+	 {
+	 	text-decoration: none;
+		width: 254px;
+		line-height: 40px;
+		font-size: 19px;
+		color: maroon;
+		font-weight: bolder;
+		display: inline-block;
+	 }
+	.reg_section 
+	{
+		padding: 31px;
+		margin: -2px;
+		border-bottom: 3px dotted #eee;
+	}
+
+	
+	.register input[type=text], .register input[type=password], .register select, .register textarea 
+	{	
+    width: 321px;
+	}
+	 
+   input[type=text], input[type=password],input[type=number], .register select, .register textarea 
+	{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		margin-left: -8px;
+		padding: 0 22px;
+		height: 34px;
+		color: #404040 !important;
+		background: #fff;
+		border-style: solid;
+		border-color: cadetblue;
+		border-radius: 3px;
+
+	}
+	input.transparent-input{
+       background-color:rgba(0,0,0,0) !important;
+       border:none !important;
+    }
+	input 
+	{
+		font-family: "Trebuchet MS",tahoma;
+		font-size: 14px;
+	}
+  
+  /*.........................End of Text Field .....................  */
