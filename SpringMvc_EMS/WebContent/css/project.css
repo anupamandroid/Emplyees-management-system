@@ -119,13 +119,13 @@
 	/*....................End of CONTANT..................*/
 	
 	/* ................ FOOTER...........................*/
+	
 	.footer 
 	{
 	  margin:10px auto;
 	  width: 300px;
 	  text-align: center;
 	  color:black;
-	  font-size: 12px;
 	}
 	.footer a 
 	{

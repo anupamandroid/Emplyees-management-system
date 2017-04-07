@@ -20,7 +20,7 @@
 	<!-- Contant  -->
 	<div class="contant">
 		<div class="form">
-			<c:forEach items="" var="i">${loginError}</c:forEach>
+			<h3>${loginError}</h3>
 			<form name="login" action="login.do" method="post"
 				onsubmit="return loginvalidation();">
 				<pre>

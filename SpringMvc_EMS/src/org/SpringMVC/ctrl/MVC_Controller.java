@@ -1,9 +1,7 @@
 package org.SpringMVC.ctrl;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.SpringMVC.Dto.SignUpDto;
 import org.SpringMVC.Ser.MVC_Services;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +23,12 @@ public class MVC_Controller {
 		System.out.println(this.getClass().getSimpleName() + "created ...");
 	}
 
-	//spring + java mail.
-	//activated=false
-	//url run app , get id
-	
 	// For Sign Up......
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
-	public String signup(SignUpDto dto, HttpServletRequest request) {
-		request.setAttribute("dto", dto);
-		if (service.saveSignUp(dto))
+	public String signup(Model model, @RequestParam String fname, @RequestParam String lname, @RequestParam long mobile,
+			@RequestParam int age, @RequestParam String email, @RequestParam String password) {
+		model.addAttribute("Email", email);
+		if (service.saveSignUp(fname, lname, mobile, age, email, password))
 			return "/SuccessPage";
 		return "redirect:/";
 	}
@@ -66,6 +61,14 @@ public class MVC_Controller {
 		return "redirect:/";
 	}
 
+	// For calling the Activation
+	@RequestMapping(value = "/active.do", method = RequestMethod.GET)
+	public String activeIt(@RequestParam String email) {
+		System.out.println(email);
+		service.activeIt(email);
+		return "/ActivationPage";
+	}
+
 	// For Image upload
 	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
 	public String upload(@RequestParam CommonsMultipartFile file) {
@@ -81,32 +84,31 @@ public class MVC_Controller {
 			return "/SuccessPage";
 		return "redirect:/";
 	}
-	
+
 	// *************************************************************************//
-		// For call SignUpPage
-		@RequestMapping(value = "/callsignup.do", method = RequestMethod.GET)
-		public String callsignup() {
-			return "/SignUpPage";
-		}
+	// For call SignUpPage
+	@RequestMapping(value = "/callsignup.do", method = RequestMethod.GET)
+	public String callsignup() {
+		return "/SignUpPage";
+	}
 
-		// For call resetPage
-		@RequestMapping(value = "/callforget.do", method = RequestMethod.GET)
-		public String callforgot() {
-			return "/ResetPage";
-		}
+	// For call resetPage
+	@RequestMapping(value = "/callforget.do", method = RequestMethod.GET)
+	public String callforgot() {
+		return "/ResetPage";
+	}
 
-		// For call loginPage
-		@RequestMapping(value = "/calllogin.do", method = RequestMethod.GET)
-		public String calllogin() {
-			return "/LoginPage";
-		}
+	// For call loginPage
+	@RequestMapping(value = "/calllogin.do", method = RequestMethod.GET)
+	public String calllogin() {
+		return "/LoginPage";
+	}
 
-		// For call updatePage
-		@RequestMapping(value = "/callupdate.do", method = RequestMethod.GET)
-		public String callupdate() {
-			return "/UpdatePage";
-		}
-		// ***************************************************************************//
-
+	// For call updatePage
+	@RequestMapping(value = "/callupdate.do", method = RequestMethod.GET)
+	public String callupdate() {
+		return "/UpdatePage";
+	}
+	// ***************************************************************************//
 
 }

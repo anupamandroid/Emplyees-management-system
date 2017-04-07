@@ -16,7 +16,9 @@
 	<!-- Contant  -->
 	<dir class="contant">
 		<div class="form">
-			<h2>Sign up is success...for user ${dto}</h2>
+		
+			<h3>Sign up is success... ${Email}</h3>
+			<h3>Activation link has send to your above Email-ID!  Please click on that.. </h3>
 			<a href="calllogin.do" class="reg_section">Login Page</a>
 		</div>
 	</dir>

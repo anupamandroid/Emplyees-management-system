@@ -28,7 +28,7 @@ Last Name  	   <input type="text" name="lname"
 						onhange="text_validation(this)" class="text_error">
 Mobile 	   	   <input type="text" name="mobile"
 						onhange="text_validation(this)" class="text_error">
-Age	   	  	   <input type="text" name="age"
+  Age	   	   <input type="text" name="age"
 						onhange="text_validation(this)" class="text_error">
 Email	  	   <input type="text" name="email"
 						onhange="text_validation(this)" id= "email_error" class="text_error">

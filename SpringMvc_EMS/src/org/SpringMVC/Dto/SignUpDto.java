@@ -35,7 +35,9 @@ public class SignUpDto implements Serializable {
 	@Column(name = "u_password")
 	private String password;
 	@Column(name = "u_age")
-	private String age;
+	private int age;
+	@Column(name="u_active")
+	private boolean active;
 
 	public int getId() {
 		return id;
@@ -68,7 +70,20 @@ public class SignUpDto implements Serializable {
 	public void setMobile(long mob) {
 		this.mobile = mob;
 	}
+	public int getAge() {
+		return age;
+	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -84,14 +99,7 @@ public class SignUpDto implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getAge() {
-		return age;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
+	
 
 	@Override
 	public String toString() {
