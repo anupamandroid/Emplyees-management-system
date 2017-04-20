@@ -29,7 +29,7 @@ function signupvalidation()
 		return true;
 }
 
-
+/****************************************** Check Login ****************************************/
 function loginvalidation()
 {
 	var error=document.getElementById("error");
@@ -56,4 +56,4 @@ function emailvalidtion() {
 }
 
 
-
+/************************************************** JavaScript *******************************************/

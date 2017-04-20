@@ -17,10 +17,11 @@ public class MVC_Controller {
 	@Autowired
 	private MVC_Services service;
 
-	private Logger logger = Logger.getLogger(this.getClass());
+	// For logger
+	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public MVC_Controller() {
-		System.out.println(this.getClass().getSimpleName() + "created ...");
+		logger.info(this.getClass().getSimpleName() + "created ...");
 	}
 
 	// For Sign Up......
@@ -40,7 +41,6 @@ public class MVC_Controller {
 			model.addAttribute("loginError", "Error logging in, Please try again");
 			return "redirect:/";
 		}
-		logger.info("Hello");
 		session.setAttribute("loginUser", email);
 		return "/HomePage";
 	}
@@ -49,7 +49,7 @@ public class MVC_Controller {
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginUser");
-		System.out.println("You are successfully logged out!");
+		logger.info("You are successfully logged out!");
 		return "/LoginPage";
 	}
 
@@ -64,7 +64,6 @@ public class MVC_Controller {
 	// For calling the Activation
 	@RequestMapping(value = "/active.do", method = RequestMethod.GET)
 	public String activeIt(@RequestParam String email) {
-		System.out.println(email);
 		service.activeIt(email);
 		return "/ActivationPage";
 	}

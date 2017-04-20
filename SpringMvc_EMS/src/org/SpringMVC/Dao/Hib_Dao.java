@@ -1,6 +1,7 @@
 package org.SpringMVC.Dao;
 
 import org.SpringMVC.Dto.SignUpDto;
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,9 +14,12 @@ public class Hib_Dao {
 
 	@Autowired
 	private SessionFactory factory;
+	
+	// For logger
+	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public Hib_Dao() {
-		System.out.println(this.getClass().getSimpleName() + "created ...");
+		logger.info(this.getClass().getSimpleName() + "created ...");
 	}
 
 	public boolean save(SignUpDto dto) {
@@ -26,8 +30,9 @@ public class Hib_Dao {
 			transation = session.beginTransaction();
 			session.save(dto);
 			transation.commit();
-			System.out.println("Records inserted sucessessfully");
+			logger.info("Records inserted sucessessfully");
 		} catch (HibernateException e) {
+			logger.error("Error while saving ! "+e.getMessage() );
 			transation.rollback();
 			e.printStackTrace();
 			return false;
@@ -58,10 +63,11 @@ public class Hib_Dao {
 			String hql = "update SignUpDto S set S.password= '" + s + "' where S.email='" + name + "'";
 			session.createQuery(hql).executeUpdate();
 			transation.commit();
-			System.out.println("Records updated sucessessfully");
+			logger.info("Records updated sucessessfully");
 			return true;
 			
 		} catch (HibernateException e) {
+			logger.error("Error while update ! "+e.getMessage() );
 			transation.rollback();
 			e.printStackTrace();
 			return false;
@@ -79,9 +85,10 @@ public class Hib_Dao {
 			String hql = "update SignUpDto S set S.active = 1 where S.email='" + email_id + "'";
 			session.createQuery(hql).executeUpdate();
 			transation.commit();
-			System.out.println("Records updated sucessessfully");
+			logger.info("Activation is sucessessfully");
 			
 		} catch (HibernateException e) {
+			logger.error("Error while Activation ! "+e.getMessage() );
 			transation.rollback();
 			e.printStackTrace();
 		} finally {
