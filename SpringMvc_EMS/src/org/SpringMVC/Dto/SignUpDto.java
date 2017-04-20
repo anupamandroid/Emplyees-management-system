@@ -8,20 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.apache.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "signup_table")
 public class SignUpDto implements Serializable {
-
-	// For logger
-	private final Logger logger = Logger.getLogger(this.getClass());
 	
 	public SignUpDto() {
-		logger.info(this.getClass().getSimpleName() + "created ...");
-		
 	}
 
 	@Id
