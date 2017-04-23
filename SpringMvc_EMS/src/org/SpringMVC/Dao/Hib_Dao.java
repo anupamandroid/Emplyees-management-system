@@ -14,7 +14,7 @@ public class Hib_Dao {
 
 	@Autowired
 	private SessionFactory factory;
-	
+
 	// For logger
 	private final Logger logger = Logger.getLogger(this.getClass());
 
@@ -32,7 +32,7 @@ public class Hib_Dao {
 			transation.commit();
 			logger.info("Records inserted sucessessfully");
 		} catch (HibernateException e) {
-			logger.error("Error while saving ! "+e.getMessage() );
+			logger.error("Error while saving ! " + e.getMessage());
 			transation.rollback();
 			e.printStackTrace();
 			return false;
@@ -47,14 +47,15 @@ public class Hib_Dao {
 		Session session = factory.openSession();
 
 		try {
-			String hql = "select S from SignUpDto S where S.email ='" + name + "' and S.password ='" + pwd + "'and S.active = 1 ";
+			String hql = "select S from SignUpDto S where S.email ='" + name + "' and S.password ='" + pwd
+					+ "'and S.active = 1 ";
 			return (SignUpDto) session.createQuery(hql).uniqueResult();
 		} finally {
 			session.close();
 		}
 	}
 
-	public boolean reset(String name,String s) {
+	public boolean reset(String name, String s) {
 
 		Session session = factory.openSession();
 		Transaction transation = null;
@@ -65,9 +66,9 @@ public class Hib_Dao {
 			transation.commit();
 			logger.info("Records updated sucessessfully");
 			return true;
-			
+
 		} catch (HibernateException e) {
-			logger.error("Error while update ! "+e.getMessage() );
+			logger.error("Error while update ! " + e.getMessage());
 			transation.rollback();
 			e.printStackTrace();
 			return false;
@@ -77,7 +78,7 @@ public class Hib_Dao {
 	}
 
 	public void activeNow(String email_id) {
-		
+
 		Session session = factory.openSession();
 		Transaction transation = null;
 		try {
@@ -86,14 +87,46 @@ public class Hib_Dao {
 			session.createQuery(hql).executeUpdate();
 			transation.commit();
 			logger.info("Activation is sucessessfully");
-			
+
 		} catch (HibernateException e) {
-			logger.error("Error while Activation ! "+e.getMessage() );
+			logger.error("Error while Activation ! " + e.getMessage());
 			transation.rollback();
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		
+
+	}
+
+	public SignUpDto retriveDto(String uEmail) {
+		Session session = factory.openSession();
+
+		try {
+			String hql = "select S from SignUpDto S where S.email ='" + uEmail + "'";
+			return (SignUpDto) session.createQuery(hql).uniqueResult();
+		} finally {
+			session.close();
+		}
+	}
+
+	public boolean updateData(String fname, String lname, long mobile, int age, String uEmail, String password) {
+		Session session = factory.openSession();
+		Transaction transation = null;
+		try {
+			transation = session.beginTransaction();
+			String hql = "update SignUpDto S set S.fname = '" + fname + "', S.lname = '" + lname + "',S.mobile = "
+					+ mobile + ",S.age = " + age + ",S.password = '" + password + "' where S.email ='" + uEmail + "'";
+			session.createQuery(hql).executeUpdate();
+			transation.commit();
+			logger.info("Records updated sucessessfully");
+			return true;
+		} catch (HibernateException e) {
+			logger.error("Error while updating ! " + e.getMessage());
+			transation.rollback();
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
 	}
 }

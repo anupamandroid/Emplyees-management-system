@@ -31,16 +31,17 @@ Mobile 	   	   <input type="text" name="mobile"
   Age	   	   <input type="text" name="age"
 						onhange="text_validation(this)" class="text_error">
 Email	  	   <input type="text" name="email"
-						onhange="text_validation(this)" id= "email_error" class="text_error">
+						onhange="text_validation(this)" id="email_error"
+						class="text_error">
 Password	   <input type="password" name="password"
 						onhange="pwd_validation(this)" id="pwd_error" class="text_error">
 C_Password	   <input type="password" name="c_password"
 						onhange="pwd_validation(this)" id="cpwd_error" class="text_error">
 
 	
-	<input type="submit" value="SignUp" name="signup" class="button">
-	<input type="reset" value="Reset" class="button">
-		</pre>
+				<input type="submit" value="SignUp" name="signup" class="button">
+				<input type="reset" value="Reset" class="button">
+		   </pre>
 			</form>
 		</div>
 	</dir>

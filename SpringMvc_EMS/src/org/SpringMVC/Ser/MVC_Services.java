@@ -127,8 +127,13 @@ public class MVC_Services {
 		mailSender.send(message);
 	}
 
-	public boolean Retrive(String uEmail) {
+	public SignUpDto retrive(String uEmail) {
+		logger.info("Retrive in service class");
+		 return signupdao.retriveDto(uEmail);
+	}
 
+	public boolean updateProfile(String fname, String lname, long mobile, int age, String uEmail, String password) {
+		if(signupdao.updateData(fname,lname,mobile,age,uEmail,password)) return true;
 		return false;
 	}
 

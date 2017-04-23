@@ -17,21 +17,35 @@
 	</div>
 	<!-- Contant  -->
 	<dir class="contant">
-
 		<div class="form">
-			<form action="update.do" method="post">
-				<c:forEach items="" var="i">
-					<pre>
-First Name 	   <input type="text" name="fname" value="${dto.fname}">
-Last Name  	   <input type="text" name="lname" value="${dto.lname}">
-Mobile 	   	   <input type="text" name="mobile" value="${dto.mobile}">
-Email	  	   <input type="text" name="email" value="${dto.email}"
-							class="transparent-input">
-Age	   	  	   <input type="text" name="age" value="${dto.age}">
+			<div id="error"></div>
+			<form name="signupForm" action="update.do" method="post"
+				onsubmit="return signupvalidation()">
+				<pre>
+First Name 	   <input type="text" name="fname"
+						onhange="text_validation(this)" class="text_error"
+						value="${dto.fname}">
+Last Name  	   <input type="text" name="lname"
+						onhange="text_validation(this)" class="text_error"
+						value="${dto.lname}">
+Mobile 	   	   <input type="text" name="mobile"
+						onhange="text_validation(this)" class="text_error"
+						value="${dto.mobile}">
+  Age	   	   <input type="text" name="age"
+						onhange="text_validation(this)" class="text_error"
+						value="${dto.age}">
+Email	  	   <input type="text" name="email"
+						onhange="text_validation(this)" id="email_error"
+						class="text_error" value="${dto.email}" readonly="readonly">
+Password	   <input type="password" name="password"
+						onhange="pwd_validation(this)" id="pwd_error" class="text_error"
+						value="${dto.password}">
+C_Password	   <input type="password" name="c_password"
+						onhange="pwd_validation(this)" id="cpwd_error" class="text_error"
+						value="${dto.password}">
 	
-		<input type="submit" value="Update" name="update" class="button">
-		</pre>
-				</c:forEach>
+			<input type="submit" value="Update" name="update" class="button">
+			</pre>
 			</form>
 		</div>
 	</dir>

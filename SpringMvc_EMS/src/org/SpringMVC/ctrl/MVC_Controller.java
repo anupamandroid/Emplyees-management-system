@@ -30,7 +30,7 @@ public class MVC_Controller {
 			@RequestParam int age, @RequestParam String email, @RequestParam String password) {
 		model.addAttribute("Email", email);
 		if (service.saveSignUp(fname, lname, mobile, age, email, password))
-			return "/SuccessPage";
+			return "/SignUpSuccPage";
 		return "redirect:/";
 	}
 
@@ -57,7 +57,7 @@ public class MVC_Controller {
 	@RequestMapping(value = "/reset.do", method = RequestMethod.POST)
 	public String reset(@RequestParam String email) {
 		if (service.reset(email))
-			return "/SuccessPage";
+			return "/ForgetSuccPage";
 		return "redirect:/";
 	}
 
@@ -72,15 +72,17 @@ public class MVC_Controller {
 	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
 	public String upload(@RequestParam CommonsMultipartFile file) {
 		if (service.saveImage(file))
-			return "/SuccessPage";
+			return "/FileUploadSuccPage";
 		return "redirect:/";
 	}
 
+	// For Update your profile
 	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
-	public String update(HttpSession session) {
+	public String update(HttpSession session,@RequestParam String fname, @RequestParam String lname, @RequestParam long mobile,
+			@RequestParam int age,@RequestParam String password) {
 		String uEmail = (String) session.getAttribute("loginUser");
-		if (service.Retrive(uEmail))
-			return "/SuccessPage";
+		if (service.updateProfile(fname, lname, mobile, age, uEmail, password))
+			return "/UpdateSuccPage";
 		return "redirect:/";
 	}
 
@@ -102,10 +104,19 @@ public class MVC_Controller {
 	public String calllogin() {
 		return "/LoginPage";
 	}
+	
+	// For call loginPage
+		@RequestMapping(value = "/callHome.do", method = RequestMethod.GET)
+		public String callHome() {
+			return "/HomePage";
+		}
 
 	// For call updatePage
 	@RequestMapping(value = "/callupdate.do", method = RequestMethod.GET)
-	public String callupdate() {
+	public String callupdate(HttpSession session) {
+		String uEmail = (String) session.getAttribute("loginUser");
+		logger.info("Data is fetch from db for"+uEmail);
+		session.setAttribute("dto", service.retrive(uEmail));
 		return "/UpdatePage";
 	}
 	// ***************************************************************************//
